@@ -1,5 +1,93 @@
 return {
   {
+    "forest-nvim/sequoia.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "bjarneo/aether.nvim",
+    name = "aether",
+    priority = 1000,
+    opts = {
+      transparent = false,
+      colors = {
+        -- Monotone shades (base00-base07)
+        base00 = "#0c0c0c", -- Default background
+        base01 = "#bfac89", -- Lighter background (status bars)
+        base02 = "#0c0c0c", -- Selection background
+        base03 = "#bfac89", -- Comments, invisibles
+        base04 = "#e4bf7c", -- Dark foreground
+        base05 = "#f5e8d1", -- Default foreground
+        base06 = "#f5e8d1", -- Light foreground
+        base07 = "#e4bf7c", -- Light background
+
+        -- Accent colors (base08-base0F)
+        base08 = "#d40d09", -- Variables, errors, red
+        base09 = "#f6312d", -- Integers, constants, orange
+        base0A = "#dd920a", -- Classes, types, yellow
+        base0B = "#969408", -- Strings, green
+        base0C = "#4a8699", -- Support, regex, cyan
+        base0D = "#275d7c", -- Functions, keywords, blue
+        base0E = "#bb3b74", -- Keywords, storage, magenta
+        base0F = "#f6af2e", -- Deprecated, brown/yellow
+      },
+    },
+    config = function(_, opts)
+      require("aether").setup(opts)
+    end,
+  },
+  {
+    "AbacatePay/vscode-theme",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optional: Configure the theme here if needed
+      -- require("abacatepay-theme").setup({})
+    end,
+  },
+  {
+    "Shatur/neovim-ayu",
+    config = function()
+      require("ayu").setup({
+        mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+        terminal = true, -- Set to `false` to let terminal manage its own colors.
+        overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+      })
+    end,
+  },
+  {
+    "2nthony/vitesse.nvim",
+    dependencies = {
+      "tjdevries/colorbuddy.nvim",
+    },
+  },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    -- Add in any other configuration;
+    --   event = foo,
+    --   config = bar
+    --   end,
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
+    lazy = false,
+    priority = 1000,
+    -- you can set set configuration options here
+    -- config = function()
+    --     vim.g.zenbones_darken_comments = 45
+    --     vim.cmd.colorscheme('zenbones')
+    --end
+  },
+  {
+    "getomni/neovim",
+  },
+  {
+    "wesleimp/min-theme.nvim",
+    lazy = false,
+    priority = 1000, -- load this before other plugins
+  },
+  {
     "neanias/everforest-nvim",
     opts = {
       colorscheme = "everforest",
@@ -21,50 +109,26 @@ return {
     priority = 1000,
     opts = {
       colorscheme = "tokyonight",
-      variant = "day",
+      variant = "storm",
     },
+    config = function()
+      vim.cmd("colorscheme tokyonight-storm")
+    end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function() end,
+    opts = ...,
   },
   {
     { "shaunsingh/nord.nvim" },
     {
       "LazyVim/LazyVim",
       opts = {
-        colorscheme = "nord",
+        colorscheme = "rose-pine",
       },
     },
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    config = function()
-      require("kanagawa").setup({
-        compile = false,
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = true,
-        dimInactive = false,
-        terminalColors = true,
-        styles = {
-          transparency = true,
-        },
-        colors = {
-          palette = {},
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
-        overrides = function(_)
-          return {}
-        end,
-        theme = "wave",
-        background = {
-          dark = "wave",
-          light = "wave",
-        },
-      })
-    end,
   },
   {
     "everviolet/nvim",
@@ -89,25 +153,14 @@ return {
     },
   },
   {
-    "baliestri/aura-theme",
-    lazy = false,
-    priority = 1000,
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-    end,
-  },
-  {
     "xero/evangelion.nvim",
     lazy = false,
-    priority = 1000,
+    priority = 0,
   },
   {
     "xero/miasma.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd("colorscheme miasma")
-    end,
   },
   {
     "rose-pine/neovim",
@@ -192,25 +245,12 @@ return {
         end,
       })
 
-      vim.cmd("colorscheme rose-pine")
       -- vim.cmd("colorscheme rose-pine-main")
       -- vim.cmd("colorscheme rose-pine-moon")
       -- vim.cmd("colorscheme rose-pine-dawn")
     end,
     priority = 1000,
   },
-
-  {
-    "ellisonleao/gruvbox.nvim",
-  },
-
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin", -- ou "gruvbox", "rose-pine", etc.
-    },
-  },
-
   {
     "catppuccin/nvim",
     lazy = true,
