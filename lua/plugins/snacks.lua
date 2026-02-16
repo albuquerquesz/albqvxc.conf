@@ -33,12 +33,16 @@ return {
 ██║     █████╗    ╚███╔╝  ███████╗ ███████║
 ██║     ██╔══╝    ██╔██╗  ╚════██║ ██╔══██║
 ███████╗███████╗ ██╔╝ ██╗ ███████║ ██║  ██║
-╚══════╝╚══════╝ ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝
-
-Bom dia, magnata! Qual a boa pra hoje?]],
+╚══════╝╚══════╝ ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝]],
             align = "center",
             padding = 1,
             hl = "SnacksDashboardHeader",
+          },
+          {
+            text = "Bom dia, magnata! Qual a boa pra hoje?",
+            align = "center",
+            padding = 1,
+            hl = "SnacksDashboardDesc",
           },
           { section = "keys", gap = 1, padding = 1 },
         },
