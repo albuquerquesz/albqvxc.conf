@@ -1,6 +1,13 @@
 return {
   {
     "folke/snacks.nvim",
+    config = function(_, opts)
+      vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { link = "Title" })
+      vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { link = "Comment" })
+      vim.api.nvim_set_hl(0, "SnacksDashboardKey", { link = "Keyword" })
+      vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { link = "Normal" })
+      require("snacks").setup(opts)
+    end,
     opts = {
       dashboard = {
         preset = {
@@ -19,8 +26,20 @@ return {
           },
         },
         sections = {
-          { section = "header", padding = -20 },
-          { text = "Bom dia, magnata! Qual a boa pra hoje?", align = "center", padding = 1 },
+          {
+            text = [[
+██╗     ███████╗ ██╗  ██╗ ███████╗  █████╗ 
+██║     ██╔════╝ ╚██╗██╔╝ ██╔════╝ ██╔══██╗
+██║     █████╗    ╚███╔╝  ███████╗ ███████║
+██║     ██╔══╝    ██╔██╗  ╚════██║ ██╔══██║
+███████╗███████╗ ██╔╝ ██╗ ███████║ ██║  ██║
+╚══════╝╚══════╝ ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝
+
+Bom dia, magnata! Qual a boa pra hoje?]],
+            align = "center",
+            padding = 1,
+            hl = "SnacksDashboardHeader",
+          },
           { section = "keys", gap = 1, padding = 1 },
         },
       },
