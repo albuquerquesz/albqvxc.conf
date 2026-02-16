@@ -2,10 +2,22 @@ return {
   {
     "folke/snacks.nvim",
     config = function(_, opts)
-      vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { link = "Title" })
-      vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { link = "Comment" })
-      vim.api.nvim_set_hl(0, "SnacksDashboardKey", { link = "Keyword" })
-      vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { link = "Normal" })
+      local function setup_dashboard_highlights()
+        vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { link = "Title" })
+        vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { link = "Comment" })
+        vim.api.nvim_set_hl(0, "SnacksDashboardKey", { link = "Keyword" })
+        vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { link = "Normal" })
+      end
+
+      -- Set up highlights initially
+      setup_dashboard_highlights()
+
+      -- Re-apply highlights when colorscheme changes
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = setup_dashboard_highlights,
+      })
+
       require("snacks").setup(opts)
     end,
     opts = {
