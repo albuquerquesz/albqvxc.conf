@@ -17,6 +17,3 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
--- vim.opt.list = false
--- local builtin = require("telescope.builtin")
--- vim.keymap.set("n", "<C-p>", builtin.find_files, {})
