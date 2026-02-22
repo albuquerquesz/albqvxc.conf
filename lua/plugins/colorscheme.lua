@@ -10,6 +10,24 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      require("catppuccin").setup({
+        transparent_background = true,
+        custom_highlights = function(_)
+          return {
+            Normal = { bg = "NONE" },
+            NormalNC = { bg = "NONE" },
+            SignColumn = { bg = "NONE" },
+            EndOfBuffer = { bg = "NONE" },
+            NormalFloat = { bg = "NONE" },
+            FloatBorder = { bg = "NONE" },
+            Pmenu = { bg = "NONE" },
+            StatusLine = { bg = "NONE" },
+            StatusLineNC = { bg = "NONE" },
+            WinSeparator = { bg = "NONE" },
+          }
+        end,
+      })
+
       vim.cmd.colorscheme("catppuccin-macchiato")
     end,
   },
@@ -72,8 +90,9 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
-    config = function() end,
-    opts = ...,
+    opts = {
+      transparent_mode = true,
+    },
   },
   {
     { "shaunsingh/nord.nvim" },
