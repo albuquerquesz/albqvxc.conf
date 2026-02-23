@@ -1,3 +1,21 @@
+local goose_available_notified = false
+
+local function has_goose_binary()
+  if vim.fn.executable("goose") == 1 then
+    return true
+  end
+  if not goose_available_notified then
+    goose_available_notified = true
+    vim.schedule(function()
+      vim.notify(
+        "Goose CLI não encontrado. Instale em https://block.github.io/goose/docs/getting-started/installation/",
+        vim.log.levels.WARN
+      )
+    end)
+  end
+  return false
+end
+
 return {
   -- {
   --   "supermaven-inc/supermaven-nvim",
@@ -7,8 +25,11 @@ return {
   -- },
   {
     "azorng/goose.nvim",
+    cond = has_goose_binary,
     config = function()
-      require("goose").setup({})
+      require("goose").setup({
+        prefered_picker = "snacks",
+      })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
