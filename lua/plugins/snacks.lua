@@ -2,6 +2,11 @@ return {
   {
     "folke/snacks.nvim",
     config = function(_, opts)
+      opts.explorer = vim.tbl_deep_extend("force", {
+        hidden = true,
+        ignored = true,
+      }, opts.explorer or {})
+
       local function setup_dashboard_highlights()
         vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { link = "Title" })
         vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { link = "Comment" })
@@ -21,10 +26,6 @@ return {
       require("snacks").setup(opts)
     end,
     opts = {
-      explorer = {
-        hidden = true,
-        ignored = true,
-      },
       dashboard = {
         preset = {
           keys = {
