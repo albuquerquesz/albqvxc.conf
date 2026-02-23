@@ -30,6 +30,7 @@ return {
       require("goose").setup({
         prefered_picker = "snacks",
       })
+      require("utils.goose_autodiff").setup()
 
       local goose_utils = require("utils.goose")
       vim.keymap.set("n", "<leader>gt", function()
