@@ -21,6 +21,10 @@ return {
       require("snacks").setup(opts)
     end,
     opts = {
+      explorer = {
+        hidden = true,
+        ignored = true,
+      },
       dashboard = {
         preset = {
           keys = {

@@ -1,4 +1,10 @@
 return {
+  -- {
+  --   "supermaven-inc/supermaven-nvim",
+  --   config = function()
+  --     require("supermaven-nvim").setup({})
+  --   end,
+  -- },
   {
     "azorng/goose.nvim",
     config = function()
@@ -12,7 +18,7 @@ return {
   {
     "nickjvandyke/opencode.nvim",
 
-    version = "*", -- Latest stable release
+    version = "*",
     dependencies = {
       {
         -- `snacks.nvim` integration is recommended, but optional
