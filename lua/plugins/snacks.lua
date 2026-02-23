@@ -23,7 +23,34 @@ return {
         callback = setup_dashboard_highlights,
       })
 
-      require("snacks").setup(opts)
+      local snacks = require("snacks")
+      snacks.setup(opts)
+
+      local function open_explorer(opt)
+        opt = vim.tbl_deep_extend("force", {
+          hidden = true,
+          ignored = true,
+          git_status = true,
+          git_untracked = true,
+        }, opt or {})
+        snacks.explorer(opt)
+      end
+
+      vim.keymap.set("n", "<leader>fe", function()
+        open_explorer({ cwd = LazyVim.root() })
+      end, { desc = "Explorer Snacks (root dir)" })
+
+      vim.keymap.set("n", "<leader>fE", function()
+        open_explorer()
+      end, { desc = "Explorer Snacks (cwd)" })
+
+      vim.keymap.set("n", "<leader>e", function()
+        open_explorer({ cwd = LazyVim.root() })
+      end, { desc = "Explorer" })
+
+      vim.keymap.set("n", "<leader>E", function()
+        open_explorer()
+      end, { desc = "Explorer (cwd)" })
     end,
     opts = {
       dashboard = {
