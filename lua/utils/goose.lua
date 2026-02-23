@@ -33,4 +33,21 @@ function M.decrease_width(step)
   M.adjust_width(-1 * (step or STEP))
 end
 
+function M.toggle_focus_with_insert()
+  local api = require("goose.api")
+  local state = require("goose.state")
+
+  api.toggle_focus()
+
+  local windows = state.windows
+  if not windows then
+    return
+  end
+
+  local current_win = vim.api.nvim_get_current_win()
+  if current_win == windows.input_win then
+    vim.cmd("startinsert")
+  end
+end
+
 return M

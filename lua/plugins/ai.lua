@@ -32,6 +32,9 @@ return {
       })
 
       local goose_utils = require("utils.goose")
+      vim.keymap.set("n", "<leader>gt", function()
+        goose_utils.toggle_focus_with_insert()
+      end, { desc = "Toggle goose focus (insert)" })
       vim.keymap.set("n", "<leader>g-", function()
         goose_utils.decrease_width()
       end, { desc = "Goose narrower" })
