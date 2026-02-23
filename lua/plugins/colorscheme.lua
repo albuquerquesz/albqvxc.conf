@@ -68,6 +68,9 @@ return {
       colorscheme = "everforest",
       variant = "dark",
     },
+    config = function(_, opts)
+      require("everforest").setup(opts)
+    end,
   },
   {
     "folke/tokyonight.nvim",
