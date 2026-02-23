@@ -30,6 +30,14 @@ return {
       require("goose").setup({
         prefered_picker = "snacks",
       })
+
+      local goose_utils = require("utils.goose")
+      vim.keymap.set("n", "<leader>g-", function()
+        goose_utils.decrease_width()
+      end, { desc = "Goose narrower" })
+      vim.keymap.set("n", "<leader>g=", function()
+        goose_utils.increase_width()
+      end, { desc = "Goose wider" })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
