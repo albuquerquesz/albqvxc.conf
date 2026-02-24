@@ -13,11 +13,24 @@ return {
     },
     setup = {
       tailwindcss = function(_, opts)
-        local tw = LazyVim.lsp.get_raw_config("tailwindcss")
+        local default_filetypes = {}
+        local server
+        local ok, config = pcall(require, "lspconfig.server_configurations.tailwindcss")
+        if ok then
+          server = config
+        else
+          local _, legacy = pcall(require, "lspconfig.configs.tailwindcss")
+          server = legacy
+        end
+
+        if server and server.default_config and server.default_config.filetypes then
+          default_filetypes = server.default_config.filetypes
+        end
+
         opts.filetypes = opts.filetypes or {}
 
         -- Add default filetypes
-        vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+        vim.list_extend(opts.filetypes, default_filetypes)
 
         -- Remove excluded filetypes
         --- @param ft string
@@ -26,7 +39,7 @@ return {
         end, opts.filetypes)
 
         -- Additional settings for Phoenix projects
-        opts.settings = {
+        opts.settings = vim.tbl_deep_extend("force", opts.settings or {}, {
           tailwindCSS = {
             includeLanguages = {
               elixir = "html-eex",
@@ -34,7 +47,7 @@ return {
               heex = "html-eex",
             },
           },
-        }
+        })
 
         -- Add additional filetypes
         vim.list_extend(opts.filetypes, opts.filetypes_include or {})
