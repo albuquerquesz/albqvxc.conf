@@ -14,3 +14,5 @@ tmux_nav("<C-h>", "Left")
 tmux_nav("<C-j>", "Down")
 tmux_nav("<C-k>", "Up")
 tmux_nav("<C-l>", "Right")
+
+pcall(vim.keymap.del, "n", "<leader>ug")

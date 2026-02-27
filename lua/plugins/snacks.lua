@@ -53,6 +53,7 @@ return {
       end, { desc = "Explorer (cwd)" })
     end,
     opts = {
+      indent = { enabled = false },
       dashboard = {
         preset = {
           keys = {
