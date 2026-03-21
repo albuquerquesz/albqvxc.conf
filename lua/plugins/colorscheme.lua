@@ -1,9 +1,11 @@
 return {
   {
-    "forest-nvim/sequoia.nvim",
+    "RewriteToday/theme",
+    name = "rewrite.nvim",
     lazy = false,
     priority = 1000,
   },
+  { "forest-nvim/sequoia.nvim", lazy = false, priority = 1000 },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -28,7 +30,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme("catppuccin-macchiato")
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
